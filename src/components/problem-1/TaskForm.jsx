@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const TaskForm = () => {
   const [taskName, setTaskName] = useState("");
@@ -6,11 +7,25 @@ const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Add New Task
+    const newTask = {
+      id: uuidv4(),
+      name: taskName,
+      status: taskStatus,
+    };
+
+    setTaskName("");
+    setTaskStatus("");
   };
+
+  // Name Input Handler Function
   const handleNameOnChange = (e) => {
     console.log(e.target.value);
     setTaskName(e.target.value);
   };
+
+  // Status Input Handler Functions
   const handleStatusOnChange = (e) => {
     console.log(e.target.value);
     setTaskStatus(e.target.value);
