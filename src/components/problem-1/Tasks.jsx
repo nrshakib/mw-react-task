@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TaskForm from "./TaskForm";
+import TaskList from "./TaskList";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -43,6 +44,7 @@ const Tasks = () => {
           </li>
         </ul>
       </div>
+      <TaskList />
     </div>
   );
 };
