@@ -29,13 +29,13 @@ const TaskForm = ({ addTask }) => {
   // Name Input Handler Function
   const handleNameOnChange = (e) => {
     console.log(e.target.value);
-    setTaskName(e.target.value);
+    setTaskName(e.target.value.toUpperCase());
   };
 
   // Status Input Handler Functions
   const handleStatusOnChange = (e) => {
     console.log(e.target.value);
-    setTaskStatus(e.target.value);
+    setTaskStatus(e.target.value.toLowerCase());
   };
 
   return (
