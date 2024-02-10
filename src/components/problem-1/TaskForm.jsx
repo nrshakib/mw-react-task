@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const TaskForm = () => {
+const TaskForm = ({ addTask }) => {
   const [taskName, setTaskName] = useState("");
   const [taskStatus, setTaskStatus] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (taskName.trim() === "") {
+      return;
+    }
 
     // Add New Task
     const newTask = {
@@ -14,6 +18,9 @@ const TaskForm = () => {
       name: taskName,
       status: taskStatus,
     };
+
+    // Add the new tasks to the task list
+    addTask(newTask);
 
     setTaskName("");
     setTaskStatus("");
@@ -44,6 +51,7 @@ const TaskForm = () => {
               className="form-control"
               type="text"
               name="name"
+              value={taskName}
               onChange={handleNameOnChange}
             />
           </div>
@@ -52,6 +60,7 @@ const TaskForm = () => {
               className="form-control"
               type="text"
               name="status"
+              value={taskStatus}
               onChange={handleStatusOnChange}
             />
           </div>
