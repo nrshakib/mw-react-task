@@ -1,6 +1,9 @@
+import TaskForm from "./TaskForm";
+
 const Tasks = () => {
   return (
     <div>
+      <TaskForm />
       <div className="col-8">
         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li>
