@@ -1,6 +1,19 @@
+import { useState } from "react";
+
 const TaskForm = () => {
+  const [taskName, setTaskName] = useState("");
+  const [taskStatus, setTaskStatus] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+  const handleNameOnChange = (e) => {
+    console.log(e.target.value);
+    setTaskName(e.target.value);
+  };
+  const handleStatusOnChange = (e) => {
+    console.log(e.target.value);
+    setTaskStatus(e.target.value);
   };
 
   return (
@@ -12,10 +25,20 @@ const TaskForm = () => {
           onSubmit={handleSubmit}
         >
           <div className="col-auto">
-            <input className="form-control" type="text" name="name" />
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              onChange={handleNameOnChange}
+            />
           </div>
           <div className="col-auto">
-            <input className="form-control" type="text" name="status" />
+            <input
+              className="form-control"
+              type="text"
+              name="status"
+              onChange={handleStatusOnChange}
+            />
           </div>
           <div className="col-auto">
             <button type="submit" className="btn btn-primary">
