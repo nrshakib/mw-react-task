@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import ModalC from "./ModalC";
 import useContacts from "../hooks/useContacts";
+import { Link } from "react-router-dom";
 
 const ModalB = ({ closeModal }) => {
+  const [showModalC, setShowModalC] = useState(false);
+  const [checkEven, setCheckEven] = useState(false);
   const [contacts] = useContacts([]);
+
+  const filterEven = (e) => {
+    setCheckEven(e.target.checked);
+  };
+  const filteredContacts = checkEven
+    ? contacts.filter((contact) => contact.id % 2 === 0)
+    : contacts;
+  const openModalC = () => {
+    setShowModalC(true);
+  };
 
   return (
     <div style={{ marginTop: "20px" }}>
@@ -15,7 +29,7 @@ const ModalB = ({ closeModal }) => {
             <th scope="col">Contact</th>
           </tr>
         </thead>
-        {contacts.map((contact) => {
+        {filteredContacts.map((contact) => {
           if (contact.country.name === "United States") {
             return (
               <tbody key={contact.id}>
@@ -29,7 +43,17 @@ const ModalB = ({ closeModal }) => {
           }
         })}
       </table>
+      {showModalC && <ModalC closeModal={() => setShowModalC(false)} />}
       <div className="modal-buttons d-flex justify-content-center gap-3">
+        <div className="d-flex gap-1 align-items-center">
+          <input
+            type="checkbox"
+            id="even"
+            checked={checkEven}
+            onChange={filterEven}
+          />
+          <label htmlFor="even">Only Even</label>
+        </div>
         <Link to="/problem-2/all-contacts">
           <button
             className="btn btn-lg"
