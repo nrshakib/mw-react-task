@@ -85,7 +85,7 @@ const Tasks = () => {
           </li>
         </ul>
       </div>
-      <TaskList />
+      <TaskList tasks={filtertasks()} />
     </div>
   );
 };
