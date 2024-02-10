@@ -1,9 +1,7 @@
-import { useState } from "react";
-import ModalC from "./ModalC";
-import useContacts from "../hooks/useContacts";
 import { Link } from "react-router-dom";
+import useContacts from "../hooks/useContacts";
 
-const ModalB = () => {
+const ModalB = ({ closeModal }) => {
   const [contacts] = useContacts([]);
 
   return (
@@ -32,37 +30,43 @@ const ModalB = () => {
         })}
       </table>
       <div className="modal-buttons d-flex justify-content-center gap-3">
-        <button
-          className="btn btn-lg"
-          style={{
-            backgroundColor: "#46139f",
-            borderColor: "46139f",
-            color: "white",
-          }}
-        >
-          All Contacts
-        </button>
-        <button
-          className="btn btn-lg "
-          style={{
-            backgroundColor: "#ff7f50",
-            borderColor: "white",
-            color: "white",
-          }}
-        >
-          US Contacts
-        </button>
-        <button
-          className="btn btn-lg "
-          style={{
-            backgroundColor: "#46139f",
-            borderColor: "46139f",
-            color: "white",
-          }}
-          onClick={closeModal}
-        >
-          Close
-        </button>
+        <Link to="/problem-2/all-contacts">
+          <button
+            className="btn btn-lg"
+            style={{
+              backgroundColor: "#46139f",
+              borderColor: "46139f",
+              color: "white",
+            }}
+          >
+            All Contacts
+          </button>
+        </Link>
+        <Link to="/problem-2/us-contacts">
+          <button
+            className="btn btn-lg "
+            style={{
+              backgroundColor: "#ff7f50",
+              borderColor: "white",
+              color: "white",
+            }}
+          >
+            US Contacts
+          </button>
+        </Link>
+        <Link to="/problem-2">
+          <button
+            className="btn btn-lg "
+            style={{
+              backgroundColor: "#46139f",
+              borderColor: "46139f",
+              color: "white",
+            }}
+            onClick={closeModal}
+          >
+            Close
+          </button>
+        </Link>
       </div>
     </div>
   );
