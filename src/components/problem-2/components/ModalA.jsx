@@ -2,6 +2,7 @@ import useContacts from "../hooks/useContacts.jsx";
 
 const ModalA = () => {
   const [contacts] = useContacts([]);
+  console.log(contacts);
 
   return (
     <div style={{ marginTop: "20px", marginBottom: "20px" }}>
